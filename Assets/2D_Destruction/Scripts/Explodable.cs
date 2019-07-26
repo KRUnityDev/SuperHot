@@ -25,10 +25,15 @@ public class Explodable : MonoBehaviour
     public List<GameObject> fragments = new List<GameObject>();
     private List<List<Vector2>> polygons = new List<List<Vector2>>();
    
+    public void explode()
+    {
+        explode(Vector2.zero, 0.0f);
+    }
     /// <summary>
     /// Creates fragments if necessary and destroys original gameobject
     /// </summary>
-    public void explode()
+    /// 
+    public void explode(Vector2 hitPosition, float force)
     {
         //if fragments were not created before runtime then create them now
         if (fragments.Count == 0 && allowRuntimeFragmentation)
@@ -42,6 +47,7 @@ public class Explodable : MonoBehaviour
             {
                 frag.transform.parent = null;
                 frag.SetActive(true);
+                frag.GetComponent<Rigidbody2D>().AddForce(((Vector2)frag.transform.position - hitPosition).normalized * force, ForceMode2D.Impulse);
             }
         }
         //if fragments exist destroy the original
