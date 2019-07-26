@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class proba : MonoBehaviour
 {
-    public Transform gracz;
+    Transform gracz;
     public float speed=1;
     
 
     void Start()
     {
+        gracz = GameObject.Find("postac").transform;
     }
 
     private void FixedUpdate()
@@ -27,7 +28,7 @@ public class proba : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             transform.position=transform.parent.transform.position;
-            enabled = false;
+            gameObject.SetActive(false);
         }
     }
 

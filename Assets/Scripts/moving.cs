@@ -7,6 +7,7 @@ public class moving : MonoBehaviour
     public float speed = 10;
     public float jump=10;
     public int jumps=2;
+    public GameObject bullet;
 
     int jump_index;
     public static float myTimeScale;
@@ -38,12 +39,20 @@ public class moving : MonoBehaviour
         {
             rb.AddForce(new Vector2(-speed * Time.deltaTime, 0), ForceMode2D.Force);
         }
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            shooting();
+        }
         myTimeScale = rb.velocity.magnitude/10f;
-        Debug.Log(myTimeScale);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         jump_index = jumps;
+    }
+
+    void shooting()
+    {
+        Instantiate(bullet, transform.position, Quaternion.identity, null);
     }
 }
