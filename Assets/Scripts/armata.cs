@@ -6,6 +6,7 @@ public class armata : MonoBehaviour
 {
     public float czas_strzelania = 3f;
     Transform gracz;
+    public GameObject enemies;
 
     int indeks=0;
     float timer=0;
@@ -30,8 +31,7 @@ public class armata : MonoBehaviour
     void shoot(int i)
     {
         timer = czas_strzelania;
-        transform.GetChild(i).transform.position = transform.position;
-        transform.GetChild(i).gameObject.SetActive(true);
+        Instantiate(enemies,transform.position, Quaternion.identity,null);
         
     }
 }

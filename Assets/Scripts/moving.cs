@@ -22,7 +22,7 @@ public class moving : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow)|| Input.GetKeyDown(KeyCode.W))
         {
             if (jump_index > 0)
             {
@@ -31,11 +31,11 @@ public class moving : MonoBehaviour
                 jump_index--;
             }
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow)|| Input.GetKey(KeyCode.D))
         {
             rb.AddForce(new Vector2(speed * Time.deltaTime, 0), ForceMode2D.Force);
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             rb.AddForce(new Vector2(-speed * Time.deltaTime, 0), ForceMode2D.Force);
         }
@@ -53,6 +53,6 @@ public class moving : MonoBehaviour
 
     void shooting()
     {
-        Instantiate(bullet, transform.position, Quaternion.identity, null);
+        Instantiate(bullet, transform.position+new Vector3(0,0.5f,0), Quaternion.identity, null);
     }
 }

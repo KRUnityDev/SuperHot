@@ -23,13 +23,13 @@ public class proba : MonoBehaviour
         transform.position = Vector2.Lerp(transform.position, gracz.position, Time.deltaTime *speed* moving.myTimeScale);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            transform.position=transform.parent.transform.position;
-            gameObject.SetActive(false);
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        transform.position=transform.parent.transform.position;
+    //        gameObject.SetActive(false);
+    //    }
+    //}
 
 }
